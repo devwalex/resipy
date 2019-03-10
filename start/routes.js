@@ -17,5 +17,8 @@
 const Route = use('Route')
 
 Route.get('/', () => {
-  return { greeting: 'Hello world in JSON' }
+  return { greeting: 'Welcome To Resipy Api' }
 })
+Route.get('foods', 'FoodController.allFoods')
+Route.get('food/:id', 'FoodController.eachFood')
+
