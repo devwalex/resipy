@@ -22,7 +22,7 @@ class CategorySeeder {
       category_label: 'Yoruba Foods'
       },
       {
-        category_label: 'Hausa Foods'
+        category_label: 'Ibo Foods'
       }
     )
     // await Database.raw("SET FOREIGN_KEY_CHECKS = 1;");

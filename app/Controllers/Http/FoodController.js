@@ -1,9 +1,13 @@
 'use strict'
 
 const Food = use('App/Models/Food')
+const Category = use('App/Models/Category')
+
 class FoodController {
     async allFoods({ response }){
-        const foods = await Food.all()
+        const foods = await Food.query()
+        .with('foodCategory')
+        .fetch()
         response.status(200).json({
             message: 'All types of food available',
             data: foods
@@ -13,6 +17,7 @@ class FoodController {
     async eachFood({ response, params: { id } }){
         const food = await Food.query()
         .where('id', id)
+        .with('foodCategory')
         .first()
 
         response.status(200).json({
