@@ -21,4 +21,10 @@ Route.get('/', () => {
 })
 Route.get('foods', 'FoodController.allFoods')
 Route.get('food/:id', 'FoodController.eachFood')
+Route.post('food', 'FoodController.addFood')
+Route.put('food/:id', 'FoodController.editFood')
+Route.delete('food/:id', 'FoodController.deleteFood')
+
+
+
 
