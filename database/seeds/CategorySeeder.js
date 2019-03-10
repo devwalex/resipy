@@ -12,9 +12,20 @@
 
 /** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
-
+const Database = use("Database");
 class CategorySeeder {
   async run () {
+    // await Database.raw("SET FOREIGN_KEY_CHECKS = 0;");
+
+    const categories = await Database.table("categories").insert(
+      {
+      category_label: 'Yoruba Foods'
+      },
+      {
+        category_label: 'Hausa Foods'
+      }
+    );
+    // await Database.raw("SET FOREIGN_KEY_CHECKS = 1;");
   }
 }
 
