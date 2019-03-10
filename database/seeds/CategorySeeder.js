@@ -24,7 +24,7 @@ class CategorySeeder {
       {
         category_label: 'Hausa Foods'
       }
-    );
+    )
     // await Database.raw("SET FOREIGN_KEY_CHECKS = 1;");
   }
 }
