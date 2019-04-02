@@ -10,6 +10,9 @@ class UserSchema extends Schema {
       table.string('username', 80).notNullable().unique()
       table.string('email', 254).notNullable().unique()
       table.string('password', 60).notNullable()
+      table.string('app_key')
+      table.string('verification_token')
+      table.boolean('is_verify').defaultTo(0)
       table.timestamps()
     })
   }

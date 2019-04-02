@@ -19,6 +19,12 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Welcome To Resipy Api' }
 })
+// User route
+Route.post('register', 'UserController.register')
+Route.get('user/:id', 'UserController.showUser')
+Route.get('users', 'UserController.allUser')
+
+// Food route
 Route.get('foods', 'FoodController.allFoods')
 Route.get('food/:id', 'FoodController.eachFood')
 Route.post('food', 'FoodController.addFood')

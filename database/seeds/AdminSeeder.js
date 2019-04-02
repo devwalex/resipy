@@ -25,6 +25,7 @@ class AdminSeeder {
       username: 'ResipyAdmin',
       email: 'contact@resipy.com',
       password: encryptedPassword,
+      is_verify: 1
     })
     await Database.raw('SET FOREIGN_KEY_CHECKS = 0;')
   }
