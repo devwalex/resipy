@@ -57,12 +57,44 @@ class UserController {
             user.password = password
             user.verification_token = randomString({ length: 20 })
             await user.save()
+            await Mail.raw(`<center><h1>VERIFY YOUR EMAIL</h1></center><br>
+            <p>Dear${user.username}</p><br>
+            <p>You have successfully register your acount with us at api.resipy.com. Click on the link below to verify your account.</p>
+            <a href=localhost:3333/account/verify/${
+            user.verification_token
+            }>Verify</a>`, 
+            message => {
+                message.from(user.email);
+                message.to("api@resipy.com");
+            })
         } catch (error) {
             response.status(200).json({
                 message: 'Cannot Register User',
                 error
             })
         }
+    }
+
+    async verifyAccount({ response, params: { verification_token } }){
+        try {
+            const user = await User.findByOrFail(
+              "verification_token",
+              verification_token
+            );
+            user.is_verify = 1;
+            user.verification_token = null;
+            await user.save();
+      
+            response.status(200).json({
+              message: "Your account have been verified",
+              data: user
+            });
+          } catch (error) {
+            response.status(404).json({
+              message: "Your account has been verified already.",
+              error
+            });
+          }
     }
 }
 

@@ -23,6 +23,7 @@ Route.get('/', () => {
 Route.post('register', 'UserController.register')
 Route.get('user/:id', 'UserController.showUser')
 Route.get('users', 'UserController.allUser')
+Route.get('account/verify/:verification_token', 'UserController.verifyAccount')
 
 // Food route
 Route.get('foods', 'FoodController.allFoods')
